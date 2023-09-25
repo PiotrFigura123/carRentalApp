@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import pl.piotrFigura.backendcarrental.model.PlateNumberEntity;
 
 @Repository
-interface PlateNUmberRepository extends JpaRepository<PlateNumberEntity, Integer> {
+interface PlateNumberRepository extends JpaRepository<PlateNumberEntity, Integer> {
 }
