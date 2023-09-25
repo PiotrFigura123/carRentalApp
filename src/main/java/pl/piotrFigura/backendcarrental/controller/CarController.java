@@ -14,6 +14,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 
+
 @Slf4j
 @RecordNotFoundProcessing
 @AllArgsConstructor
@@ -22,6 +23,7 @@ import java.util.List;
 class CarController {
 
     private final CarService carService;
+
 
     @GetMapping()
     public ResponseEntity<?> getAllCars() {
