@@ -4,6 +4,7 @@ import io.micrometer.core.annotation.Timed;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import pl.piotrFigura.backendcarrental.dao.Car;
 import pl.piotrFigura.backendcarrental.exception.RecordNotFoundProcessing;
@@ -12,6 +13,7 @@ import pl.piotrFigura.backendcarrental.service.CarService;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.List;
+
 
 
 
@@ -45,7 +47,7 @@ class CarController {
 
         return ResponseEntity.ok().body(applicationMessage);
     }
-
+    @Secured({"ROLE_ADMIN", "ROLE_BRANCH"})
     @PostMapping
     ResponseEntity<?> createCar(@RequestBody @Valid Car toCreate) {
         return ResponseEntity.ok().body(carService.save(toCreate));
