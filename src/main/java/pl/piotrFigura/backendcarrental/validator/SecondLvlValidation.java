@@ -6,8 +6,6 @@ import pl.piotrFigura.backendcarrental.model.CityEntity;
 
 public interface SecondLvlValidation {
 
-    void validCarMarkIfExistInDb(Car mark);
-
     void validDuplicatedMark(String source);
 
     void validateDuplicatedCityName(String entity);

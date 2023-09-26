@@ -26,12 +26,6 @@ public class SecondLvlValidationImpl implements SecondLvlValidation {
 
     }
 
-    @Override
-    public void validCarMarkIfExistInDb(Car source) {
-        if (!carMarkRepository.existByMarkName(source.getMark().getMark().toUpperCase())) {
-            throw new NotCorrectBodyException(ValidatorErrorEnum.MARK_DO_NOT_EXIST.getValue());
-        }
-    }
 
     @Override
     public void validDuplicatedMark(String source) {

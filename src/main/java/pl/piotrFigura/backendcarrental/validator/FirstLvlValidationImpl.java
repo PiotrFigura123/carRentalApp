@@ -30,7 +30,7 @@ public class FirstLvlValidationImpl implements FirstLvlValidator {
 
             throw new NotCorrectBodyException(ValidatorErrorEnum.CITY_CANT_BE_EMPTY.getValue());
         }
-        if(sourceCity.length()> MAXIMUM_LENGTH_CITY_NAME){
+        if (sourceCity.length() > MAXIMUM_LENGTH_CITY_NAME) {
             throw new NotCorrectBodyException(sourceCity + ValidatorErrorEnum.TOO_LONG_NAME.getValue());
         }
     }
@@ -41,7 +41,7 @@ public class FirstLvlValidationImpl implements FirstLvlValidator {
 
             throw new NotCorrectBodyException(ValidatorErrorEnum.MARK_DO_NOT_EXIST.getValue());
         }
-        if(mark.length()> MAXIMUM_LENGTH_MARK_NAME){
+        if (mark.length() > MAXIMUM_LENGTH_MARK_NAME) {
             throw new NotCorrectBodyException(mark + ValidatorErrorEnum.TOO_LONG_NAME.getValue());
         }
     }
@@ -52,7 +52,7 @@ public class FirstLvlValidationImpl implements FirstLvlValidator {
 
             throw new NotCorrectBodyException(ValidatorErrorEnum.MODEL_IS_NOT_CORRECT.getValue());
         }
-        if(model.length()> MAXIMUM_LENGTH_MODEL_NAME){
+        if (model.length() > MAXIMUM_LENGTH_MODEL_NAME) {
             throw new NotCorrectBodyException(model + ValidatorErrorEnum.TOO_LONG_NAME.getValue());
         }
     }
@@ -62,7 +62,7 @@ public class FirstLvlValidationImpl implements FirstLvlValidator {
         if (engine == null || engine.isEmpty()) {
             throw new NotCorrectBodyException(ValidatorErrorEnum.ENGINE_IS_NOT_CORRECT.getValue());
         }
-        if(engine.length()> MAXIMUM_LENGTH_ENGINE_NAME){
+        if (engine.length() > MAXIMUM_LENGTH_ENGINE_NAME) {
             throw new NotCorrectBodyException(engine + ValidatorErrorEnum.TOO_LONG_NAME.getValue());
         }
     }

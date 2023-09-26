@@ -20,7 +20,7 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class CarServiceImpl implements CarService{
+public class CarServiceImpl implements CarService {
 
     private final FirstLvlValidator firstLvlValidation;
     private final SecondLvlValidation secondLvlValidation;
@@ -59,7 +59,6 @@ public class CarServiceImpl implements CarService{
 
     public String save(Car source) {
         firstLvlValidation.validSource(source);
-
         CarMarkEntity carMarkEntity = secondLvlValidation.validateCarMarkName(source);
         CityEntity cityEntity = secondLvlValidation.validateCityName(source);
         CarEntity carEntity = CarMapper.INSTANCE.map(source);
