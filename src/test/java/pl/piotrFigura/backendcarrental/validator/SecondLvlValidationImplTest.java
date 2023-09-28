@@ -9,6 +9,7 @@ import pl.piotrFigura.backendcarrental.repository.CarMarkRepository;
 import pl.piotrFigura.backendcarrental.repository.CityNameRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
+//TODO: testy integracyjne do dodania
 
 @ExtendWith(MockitoExtension.class)
 class SecondLvlValidationImplTest {

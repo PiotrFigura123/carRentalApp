@@ -26,7 +26,6 @@ class CarController {
 
     private final CarService carService;
 
-
     @GetMapping()
     public ResponseEntity<?> getAllCars() {
         log.info("Find all cars");
@@ -47,6 +46,7 @@ class CarController {
 
         return ResponseEntity.ok().body(applicationMessage);
     }
+
     @Secured({"ROLE_ADMIN", "ROLE_BRANCH"})
     @PostMapping
     ResponseEntity<?> createCar(@RequestBody @Valid Car toCreate) {

@@ -26,7 +26,6 @@ public class SecondLvlValidationImpl implements SecondLvlValidation {
 
     }
 
-
     @Override
     public void validDuplicatedMark(String source) {
         if (carMarkRepository.existByMarkName(source.toUpperCase())) {
