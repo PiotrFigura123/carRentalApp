@@ -1,0 +1,15 @@
+{
+    "mark": {
+        "mark":"amd"
+        },
+    "city":{
+        "cityName": "krakow"
+        },
+    "model": "Corsa",
+    "engine": "1.4L",
+    "petrol": "diesel",
+    "available": false,
+    "plateNumber": {
+        "registration":"wprsa"
+    }
+}

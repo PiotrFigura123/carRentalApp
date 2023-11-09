@@ -10,17 +10,18 @@ import pl.piotrFigura.backendcarrental.model.CarEntity;
 import pl.piotrFigura.backendcarrental.model.CarMarkEntity;
 import pl.piotrFigura.backendcarrental.model.CityEntity;
 import pl.piotrFigura.backendcarrental.repository.CarRepository;
-import pl.piotrFigura.backendcarrental.response.ValidatorErrorEnum;
 import pl.piotrFigura.backendcarrental.validator.FirstLvlValidator;
 import pl.piotrFigura.backendcarrental.validator.SecondLvlValidation;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static pl.piotrFigura.backendcarrental.response.ValidatorErrorEnum.RECORD_NOT_FOUND;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class CarServiceImpl implements CarService{
+public class CarServiceImpl implements CarService {
 
     private final FirstLvlValidator firstLvlValidation;
     private final SecondLvlValidation secondLvlValidation;
@@ -28,7 +29,7 @@ public class CarServiceImpl implements CarService{
 
     public void toggleCar(Integer carId) {
         CarEntity result = carRepository.findById(carId)
-                .orElseThrow(() -> new RecordNotFoundException(ValidatorErrorEnum.RECORD_NOT_FOUND.getValue()));
+                .orElseThrow(() -> new RecordNotFoundException(RECORD_NOT_FOUND.getValue()));
 
         result.toggle();
         log.info("Car with id: {} , availability is {}", result.getCarId(), result.isAvailable());
@@ -52,14 +53,13 @@ public class CarServiceImpl implements CarService{
 
     public String getCarById(Integer id) {
         CarEntity entity = carRepository.findById(id)
-                .orElseThrow(() -> new RecordNotFoundException(ValidatorErrorEnum.RECORD_NOT_FOUND.getValue()));
+                .orElseThrow(() -> new RecordNotFoundException(RECORD_NOT_FOUND.getValue()));
         return entity.toString();
 
     }
 
     public String save(Car source) {
         firstLvlValidation.validSource(source);
-
         CarMarkEntity carMarkEntity = secondLvlValidation.validateCarMarkName(source);
         CityEntity cityEntity = secondLvlValidation.validateCityName(source);
         CarEntity carEntity = CarMapper.INSTANCE.map(source);
@@ -74,7 +74,7 @@ public class CarServiceImpl implements CarService{
         CityEntity cityNameEntity = secondLvlValidation.validateCityName(source);
         CarEntity carEntity = carRepository.findById(id)
                 .orElseThrow(
-                        () -> new RecordNotFoundException(ValidatorErrorEnum.RECORD_NOT_FOUND.getValue())
+                        () -> new RecordNotFoundException(RECORD_NOT_FOUND.getValue())
                 );
         CarMapper.INSTANCE.updateCarFromDto(source, carEntity);
         carEntity.setMarkEntity(carMarkEntity);
@@ -88,7 +88,7 @@ public class CarServiceImpl implements CarService{
 
     public String deleteCarById(Integer id) {
         CarEntity carEntity = carRepository.findById(id)
-                .orElseThrow(() -> new RecordNotFoundException(ValidatorErrorEnum.RECORD_NOT_FOUND.getValue()));
+                .orElseThrow(() -> new RecordNotFoundException(RECORD_NOT_FOUND.getValue()));
 
         log.info("Deleting car id = {}", id);
         carRepository.deleteById(id);

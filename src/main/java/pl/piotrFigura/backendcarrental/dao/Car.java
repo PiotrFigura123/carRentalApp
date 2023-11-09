@@ -1,9 +1,11 @@
 package pl.piotrFigura.backendcarrental.dao;
 
-import lombok.Data;
+import lombok.*;
 
 import java.io.Serializable;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class Car implements Serializable {
     private Integer id;

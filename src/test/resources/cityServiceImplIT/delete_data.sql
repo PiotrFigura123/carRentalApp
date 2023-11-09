@@ -1,0 +1,1 @@
+DELETE FROM cars WHERE 1=1;

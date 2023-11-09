@@ -26,7 +26,6 @@ class CarController {
 
     private final CarService carService;
 
-
     @GetMapping()
     public ResponseEntity<?> getAllCars() {
         log.info("Find all cars");
@@ -34,7 +33,7 @@ class CarController {
     }
 
     @GetMapping(params = "available")
-    public ResponseEntity<?> getAllCars(@RequestParam("available") boolean isAvailable) {
+    public ResponseEntity<?> getAllAvailableCars(@RequestParam("available") boolean isAvailable) {
         log.info("Find all avalaible = {} cars", isAvailable);
         List<Car> cars = carService.findAvailableCars(isAvailable);
         return ResponseEntity.ok().body(cars);
@@ -47,6 +46,7 @@ class CarController {
 
         return ResponseEntity.ok().body(applicationMessage);
     }
+
     @Secured({"ROLE_ADMIN", "ROLE_BRANCH"})
     @PostMapping
     ResponseEntity<?> createCar(@RequestBody @Valid Car toCreate) {

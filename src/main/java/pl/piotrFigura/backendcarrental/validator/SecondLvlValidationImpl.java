@@ -11,6 +11,7 @@ import pl.piotrFigura.backendcarrental.repository.CarMarkRepository;
 import pl.piotrFigura.backendcarrental.repository.CityNameRepository;
 import pl.piotrFigura.backendcarrental.response.ValidatorErrorEnum;
 
+
 @RequiredArgsConstructor
 @Component
 public class SecondLvlValidationImpl implements SecondLvlValidation {
@@ -24,13 +25,6 @@ public class SecondLvlValidationImpl implements SecondLvlValidation {
             throw new NotCorrectBodyException(ValidatorErrorEnum.CITY_EXIST_IN_TABLE.getValue());
         }
 
-    }
-
-    @Override
-    public void validCarMarkIfExistInDb(Car source) {
-        if (!carMarkRepository.existByMarkName(source.getMark().getMark().toUpperCase())) {
-            throw new NotCorrectBodyException(ValidatorErrorEnum.MARK_DO_NOT_EXIST.getValue());
-        }
     }
 
     @Override
