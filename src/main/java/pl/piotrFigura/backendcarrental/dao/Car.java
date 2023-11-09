@@ -1,11 +1,10 @@
 package pl.piotrFigura.backendcarrental.dao;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class Car implements Serializable {

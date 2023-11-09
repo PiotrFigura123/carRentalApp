@@ -1,9 +1,7 @@
 --liquibase formatted sql
 --changeset pfigura:1
-
 INSERT INTO car_marks VALUES (1, 'OPEL');
 INSERT INTO car_marks VALUES (2, 'VOLVO');
-INSERT INTO car_marks (mark) VALUES ('mark');
 
 insert into cities values (1, 'WARSZAWA');
 insert into cities values (2, 'KRAKOW');

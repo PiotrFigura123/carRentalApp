@@ -33,7 +33,7 @@ class CarController {
     }
 
     @GetMapping(params = "available")
-    public ResponseEntity<?> getAllCars(@RequestParam("available") boolean isAvailable) {
+    public ResponseEntity<?> getAllAvailableCars(@RequestParam("available") boolean isAvailable) {
         log.info("Find all avalaible = {} cars", isAvailable);
         List<Car> cars = carService.findAvailableCars(isAvailable);
         return ResponseEntity.ok().body(cars);

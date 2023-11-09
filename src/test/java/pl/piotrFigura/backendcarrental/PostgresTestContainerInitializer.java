@@ -13,7 +13,7 @@ import java.util.List;
 public class PostgresTestContainerInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
 
-    private static final int POSTGRES_PORT = 5431;
+    private static final int POSTGRES_PORT = 5432;
 
     private static final String POSTGIS_TAG = "postgis/postgis:12-3.2";
 
@@ -31,7 +31,7 @@ public class PostgresTestContainerInitializer implements ApplicationContextIniti
 
         PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer(POSTGRES_POSTGIS_IMAGE_NAME);
         postgreSQLContainer.setExposedPorts(List.of(POSTGRES_PORT));
-        postgreSQLContainer = postgreSQLContainer.withUsername("admin");
+        postgreSQLContainer = postgreSQLContainer.withUsername("test");
         postgreSQLContainer = postgreSQLContainer.withPassword("password");
         postgreSQLContainer = postgreSQLContainer.withDatabaseName("carRental");
 

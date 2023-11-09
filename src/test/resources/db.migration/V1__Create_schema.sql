@@ -1,6 +1,3 @@
---liquibase formatted sql
---changeset pfigura:1
-
 CREATE TABLE cars
 (
     car_id        serial      not null,

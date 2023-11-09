@@ -11,6 +11,7 @@ import pl.piotrFigura.backendcarrental.repository.CarMarkRepository;
 import pl.piotrFigura.backendcarrental.repository.CityNameRepository;
 import pl.piotrFigura.backendcarrental.response.ValidatorErrorEnum;
 
+
 @RequiredArgsConstructor
 @Component
 public class SecondLvlValidationImpl implements SecondLvlValidation {

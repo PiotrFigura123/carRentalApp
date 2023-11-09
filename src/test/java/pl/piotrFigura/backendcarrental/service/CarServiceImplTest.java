@@ -9,18 +9,17 @@ import pl.piotrFigura.backendcarrental.dao.Car;
 import pl.piotrFigura.backendcarrental.exception.RecordNotFoundException;
 import pl.piotrFigura.backendcarrental.model.CarEntity;
 import pl.piotrFigura.backendcarrental.repository.CarRepository;
-import pl.piotrFigura.backendcarrental.CarRentalIT;
 import pl.piotrFigura.backendcarrental.validator.FirstLvlValidator;
 import pl.piotrFigura.backendcarrental.validator.SecondLvlValidation;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static pl.piotrFigura.backendcarrental.response.ValidatorErrorEnum.RECORD_NOT_FOUND;
-
-import java.util.*;
-import java.util.stream.Collectors;
 
 
 
