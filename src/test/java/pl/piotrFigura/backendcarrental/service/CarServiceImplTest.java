@@ -22,7 +22,6 @@ import static org.mockito.Mockito.*;
 import static pl.piotrFigura.backendcarrental.response.ValidatorErrorEnum.RECORD_NOT_FOUND;
 
 
-
 class CarServiceImplTest {
 
     @InjectMocks
@@ -70,8 +69,8 @@ class CarServiceImplTest {
                         .stream()
                         .filter(a -> a.isAvailable() == dataToCheck)
                         .collect(Collectors.toList()));
-
         List<Car> cars = carService.findAvailableCars(dataToCheck);
+
         //than
         assertEquals(1, cars.size());
         assertFalse(carEntities.get(1).isAvailable());
@@ -86,6 +85,7 @@ class CarServiceImplTest {
         carEntities.get(1).setCarId(2);
         carEntities.get(2).setCarId(3);
         int id = 4;
+
         //when
         when(carRepository.findById(id)).thenReturn(
                 carEntities.stream()
@@ -98,16 +98,18 @@ class CarServiceImplTest {
     }
 
     @Test
-    void shouldFindSingleEntity(){
+    void shouldFindSingleEntity() {
         //given
         List<CarEntity> carEntities = prepareData();
         carEntities.get(0).setCarId(1);
-        int id=1;
+        int id = 1;
+
         //when
         when(carRepository.findById(id)).thenReturn(
                 carEntities.stream()
                         .filter(entity ->
                                 entity.getCarId().equals(id)).findFirst());
+
         //than
         String car = carService.getCarById(id);
         assertThat(car).contains("CarEntity{" +
