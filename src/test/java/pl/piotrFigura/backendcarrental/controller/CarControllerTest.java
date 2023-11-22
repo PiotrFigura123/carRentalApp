@@ -45,10 +45,8 @@ class CarControllerTest {
     void shouldReturnAllCarsWithOkStatus() throws Exception {
         //given
         List<Car> sampleCars = getCarsList();
-
         //when
         when(carService.findAll()).thenReturn(sampleCars);
-
         //then
         mockMvc.perform(MockMvcRequestBuilders.get(CARS_API)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -65,14 +63,12 @@ class CarControllerTest {
         List<Car> sampleCarList = getCarsList();
         boolean isCarAvailable = true;
         sampleCarList.get(0).setAvailable(true);
-
         //when
         List<Car> filtered = sampleCarList
                 .stream().filter(
                         entity -> entity.isAvailable() == isCarAvailable)
                 .collect(Collectors.toList());
         when(carService.findAvailableCars(isCarAvailable)).thenReturn(filtered);
-
         //than
         mockMvc.perform(MockMvcRequestBuilders.get(CARS_API).param("available", String.valueOf(isCarAvailable))
                 .content(String.valueOf(MediaType.APPLICATION_JSON)))
@@ -87,14 +83,12 @@ class CarControllerTest {
         List<Car> sampleCarList = getCarsList();
         Integer sampleId = 1;
         sampleCarList.get(0).setId(sampleId);
-
         //when
         when(carService.getCarById(sampleId))
                 .thenReturn(sampleCarList
                         .stream().filter(
                                 car -> car.getId() == sampleId)
                         .collect(Collectors.toList()).toString());
-
         //than
         mockMvc.perform(MockMvcRequestBuilders.get(CARS_API).param("id", String.valueOf(sampleId))
                 .content(MediaType.APPLICATION_JSON_VALUE))

@@ -15,7 +15,7 @@ import javax.annotation.security.RolesAllowed;
 @RecordNotFoundProcessing
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(("/api/v1/addMark"))
+@RequestMapping("/api/v1/addMark")
 public class MarkController {
 
     private final MarkService markService;
@@ -29,7 +29,6 @@ public class MarkController {
     @RolesAllowed({"ROLE_BRANCH", "ROLE_ADMIN"})
     @PostMapping
     public ResponseEntity<?> addMark(@RequestParam("carMark") String carMark){
-
         String message = markService.save(carMark);
         return ResponseEntity.ok().body(message);
     }
