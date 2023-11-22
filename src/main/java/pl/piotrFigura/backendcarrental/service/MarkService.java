@@ -8,6 +8,8 @@ public interface MarkService {
 
     List<CarMark> getAllMarks();
 
-    String save(String entity);
+    String save(String markName);
+
+    String deleteCarMark(String markName);
 
 }

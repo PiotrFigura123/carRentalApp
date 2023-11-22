@@ -1,10 +1,10 @@
 {
     "mark": {
-        "mark":"amd"
-        },
+        "mark":"Opel"
+    },
     "city":{
-        "cityName": "krakow"
-        },
+        "cityName": "WARSZAWA"
+    },
     "model": "Corsa",
     "engine": "1.4L",
     "petrol": "diesel",

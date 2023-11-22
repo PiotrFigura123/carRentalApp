@@ -4,7 +4,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @Getter
@@ -13,15 +15,13 @@ import java.util.List;
 @Entity
 public class CityEntity implements Serializable {
 
-    public CityEntity(String cityName) {
-        this.cityName = cityName;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "city_id")
     private Integer cityId;
+    @Column(name = "city_name")
     private String cityName;
 
     @OneToMany(mappedBy = "cityEntity")
-    private List<CarEntity> carEntity;
+    private Set<CarEntity> carEntity;
 }

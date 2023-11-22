@@ -28,12 +28,6 @@ class CarServiceImplTest {
     private CarServiceImpl carService;
 
     @Spy
-    private FirstLvlValidator firstLvlValidation;
-
-    @Spy
-    private SecondLvlValidation secondLvlValidation;
-
-    @Spy
     private CarRepository carRepository;
 
     @BeforeEach

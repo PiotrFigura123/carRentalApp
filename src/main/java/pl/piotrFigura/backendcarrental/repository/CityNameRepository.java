@@ -1,6 +1,5 @@
 package pl.piotrFigura.backendcarrental.repository;
 
-import pl.piotrFigura.backendcarrental.model.CarMarkEntity;
 import pl.piotrFigura.backendcarrental.model.CityEntity;
 
 import java.util.List;
@@ -14,8 +13,9 @@ public interface CityNameRepository {
 
     boolean existByCityName(String source);
 
-
     CityEntity save(CityEntity source);
 
+    Optional<CityEntity> findFirstByCityName(String cityName);
 
+    void deleteByCityId(Integer cityId);
 }

@@ -13,12 +13,9 @@ import java.util.List;
 @Entity
 public class CarMarkEntity implements Serializable{
 
-    public CarMarkEntity(String mark) {
-        this.mark = mark;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "mark_id")
     private Integer markId;
     private String mark;
 

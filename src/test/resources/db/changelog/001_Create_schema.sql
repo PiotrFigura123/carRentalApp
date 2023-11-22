@@ -43,7 +43,7 @@ CREATE TABLE users
     role varchar(10) not null
 );
 
-CREATE TABLE car_rental(
+CREATE TABLE carRental(
     rental_id serial not null,
     car_id  integer not null,
     user_id integer not null,

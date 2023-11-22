@@ -17,6 +17,7 @@ public class PlateNumberEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "plate_id")
     private Integer plateId;
     private String registration;
 

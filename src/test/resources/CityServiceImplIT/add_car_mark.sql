@@ -1,0 +1,1 @@
+INSERT INTO public.car_marks (mark) VALUES ('OPEL');

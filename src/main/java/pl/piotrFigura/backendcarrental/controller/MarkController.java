@@ -29,7 +29,14 @@ public class MarkController {
     @RolesAllowed({"ROLE_BRANCH", "ROLE_ADMIN"})
     @PostMapping
     public ResponseEntity<?> addMark(@RequestParam("carMark") String carMark){
+
         String message = markService.save(carMark);
+        return ResponseEntity.ok().body(message);
+    }
+    @Secured({"ROLE_ADMIN", "ROLE_BRANCH"})
+    @DeleteMapping
+    public ResponseEntity<?> removeMark(@RequestParam("carMark") String carMark){
+        String message = markService.deleteCarMark(carMark);
         return ResponseEntity.ok().body(message);
     }
 }
