@@ -15,7 +15,7 @@ import javax.annotation.security.RolesAllowed;
 @RecordNotFoundProcessing
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(("/api/v1/addMark"))
+@RequestMapping("/api/v1/addMark")
 public class MarkController {
 
     private final MarkService markService;
@@ -30,6 +30,12 @@ public class MarkController {
     @PostMapping
     public ResponseEntity<?> addMark(@RequestParam("carMark") String carMark){
         String message = markService.save(carMark);
+        return ResponseEntity.ok().body(message);
+    }
+    @Secured({"ROLE_ADMIN", "ROLE_BRANCH"})
+    @DeleteMapping
+    public ResponseEntity<?> removeMark(@RequestParam("carMark") String carMark){
+        String message = markService.deleteCarMark(carMark);
         return ResponseEntity.ok().body(message);
     }
 }

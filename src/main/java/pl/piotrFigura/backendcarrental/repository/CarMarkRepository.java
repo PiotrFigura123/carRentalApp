@@ -14,4 +14,6 @@ public interface CarMarkRepository {
     List<CarMarkEntity> findAll();
 
     CarMarkEntity save(CarMarkEntity source);
+
+    void deleteById(Integer integer);
 }

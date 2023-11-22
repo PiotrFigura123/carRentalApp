@@ -12,7 +12,6 @@ import java.util.List;
 @Slf4j
 public class PostgresTestContainerInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
-
     private static final int POSTGRES_PORT = 5432;
 
     private static final String POSTGIS_TAG = "postgis/postgis:12-3.2";
@@ -21,22 +20,16 @@ public class PostgresTestContainerInitializer implements ApplicationContextIniti
         .parse(POSTGIS_TAG)
         .asCompatibleSubstituteFor("postgres");
 
-
-
     public PostgresTestContainerInitializer() {
     }
 
-
     public void initialize(ConfigurableApplicationContext context) {
-
         PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer(POSTGRES_POSTGIS_IMAGE_NAME);
         postgreSQLContainer.setExposedPorts(List.of(POSTGRES_PORT));
         postgreSQLContainer = postgreSQLContainer.withUsername("test");
         postgreSQLContainer = postgreSQLContainer.withPassword("password");
-        postgreSQLContainer = postgreSQLContainer.withDatabaseName("carRental");
-
+        postgreSQLContainer = postgreSQLContainer.withDatabaseName("carRentalTest");
         postgreSQLContainer.start();
-
         TestPropertyValues.of(
             "postgres.database.host=" + postgreSQLContainer.getHost(),
             "postgres.database.port=" + postgreSQLContainer.getMappedPort(POSTGRES_PORT),
@@ -44,9 +37,6 @@ public class PostgresTestContainerInitializer implements ApplicationContextIniti
             "postgres.database.password=" + postgreSQLContainer.getPassword(),
             "postgres.database.name=" + postgreSQLContainer.getDatabaseName()
         ).applyTo(context.getEnvironment());
-
-
         log.info("Postgres with PostGIS containter initialized.");
     }
-
 }

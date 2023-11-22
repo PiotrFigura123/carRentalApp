@@ -18,6 +18,7 @@ public class CarEntity implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "car_id")
     private Integer carId;
     private String model;
     private String engine;
@@ -37,6 +38,7 @@ public class CarEntity implements Serializable{
     private PlateNumberEntity plateNumberEntity = new PlateNumberEntity();
 
     @Embedded
+    @Column(name = "auditableEntity")
     private AuditableEntity auditableEntity = new AuditableEntity();
 
     @Override

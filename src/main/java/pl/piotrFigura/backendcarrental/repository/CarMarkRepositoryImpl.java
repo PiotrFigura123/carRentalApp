@@ -23,4 +23,8 @@ public interface CarMarkRepositoryImpl extends CarMarkRepository, JpaRepository<
     @Override
     @Query(nativeQuery = true, value = "SELECT * FROM car_marks WHERE mark = :source")
     Optional<CarMarkEntity> findIdByMarkName(String source);
-}
+
+    @Override
+    void deleteById(Integer integer);
+
+    }

@@ -18,5 +18,10 @@ public interface CityNameRepositoryImpl extends CityNameRepository, JpaRepositor
     @Override
     boolean existByCityName(String source);
 
+    @Override
+    Optional<CityEntity> findFirstByCityName(String cityName);
+
+    @Override
+    void deleteByCityId(Integer cityId);
 }
 
