@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "5999a311-6084-412f-878a-cb2f6a4214f8",
+		"name": "carRentalApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "25663286"
+	},
+	"item": [
+		{
+			"name": "addCar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mark\": {\r\n        \"mark\":\"amd\"\r\n        },\r\n    \"city\":{\r\n        \"cityName\": \"krakow\"\r\n        },\r\n    \"model\": \"Corsa\",\r\n    \"engine\": \"1.4L\",\r\n    \"petrol\": \"diesel\",\r\n    \"available\": false,\r\n    \"plateNumber\": {\r\n        \"registration\":\"wprsa\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/v1/cars"
+			},
+			"response": []
+		},
+		{
+			"name": "getAllCars",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "pass123",
+						"username": "tom"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/v1/cars"
+			},
+			"response": []
+		},
+		{
+			"name": "updateCarData",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "pass",
+						"username": "anna"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mark\":\r\n        {\"mark\": \r\n        \"kia\"},\r\n\r\n    \"carType\": \"C1\",\r\n    \"engine\": \"6\",\r\n    \"fuelType\": \"petrol\",\r\n     \"city\":\r\n        {\"cityName\": \r\n        \"ask\"}\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/v1/cars/12"
+			},
+			"response": []
+		},
+		{
+			"name": "toggleCarAvability",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "password",
+						"username": "annasmith"
+					}
+				},
+				"method": "PATCH",
+				"header": [],
+				"url": "http://localhost:8080/api/v1/cars/4"
+			},
+			"response": []
+		},
+		{
+			"name": "getAllCarsAvalaible",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/cars?available=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"cars"
+					],
+					"query": [
+						{
+							"key": "available",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findById",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "pass",
+						"username": "anna"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/cars?id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"cars"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delereCarId",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mark\":\"Opel\",\r\n    \"model\": \"Corsa\",\r\n    \"engine\": \"1.4L\",\r\n    \"petrol\": \"diesel\",\r\n    \"available\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/v1/cars/7"
+			},
+			"response": []
+		},
+		{
+			"name": "addNerMark",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/addMark?carMark=Amd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"addMark"
+					],
+					"query": [
+						{
+							"key": "carMark",
+							"value": "Amd"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllMarks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/v1/addMark"
+			},
+			"response": []
+		},
+		{
+			"name": "getAllCities",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/v1/city"
+			},
+			"response": []
+		},
+		{
+			"name": "addNewCity",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/city?cityName=as",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"city"
+					],
+					"query": [
+						{
+							"key": "cityName",
+							"value": "as"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
