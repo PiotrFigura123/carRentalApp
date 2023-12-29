@@ -13,7 +13,6 @@ import pl.piotrFigura.backendcarrental.validator.SecondLvlValidation;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -26,29 +25,31 @@ public class MarkServiceImpl implements MarkService {
     @Override
     public List<CarMark> getAllMarks() {
         List<CarMark> cars = new ArrayList<>();
-        carMarkRepository.findAll().stream().forEach(entity -> cars.add(CarMapper.INSTANCE.map(entity)));
+        carMarkRepository.findAll()
+                .stream()
+                .forEach(entity ->
+                        cars.add(CarMapper.INSTANCE.map(entity)));
         return cars;
-
     }
 
     @Override
-    public String save(String source) {
-        firstLevelValidator.validateMark(source);
-        secondLvlValidation.validDuplicatedMark(source);
-        CarMarkEntity carMarkEntity = new CarMarkEntity();
-        carMarkEntity.setMark(source.toUpperCase());
+    public String save(String markName) {
+        markName = markName.toUpperCase();
+        firstLevelValidator.validateMark(markName);
+        secondLvlValidation.validDuplicatedMark(markName);
+        CarMarkEntity carMarkEntity = CarMapper.INSTANCE.map(new CarMark(markName));
         carMarkRepository.save(carMarkEntity);
-        return "Car mark saved: " + source.toUpperCase();
+        return "Car mark saved: " + markName;
     }
 
     @Override
     public String deleteCarMark(String markName) {
-        CarMarkEntity carMark = carMarkRepository.findIdByMarkName(markName)
+        markName = markName.toUpperCase();
+        CarMark carMark = carMarkRepository.findIdByMarkName(markName)
+                .map(entity -> new CarMark(entity.getMarkId(), entity.getMark()))
                 .orElseThrow(()->
                         new RecordNotFoundException(ValidatorErrorEnum.MARK_DO_NOT_EXIST.getValue()));
         carMarkRepository.deleteById(carMark.getMarkId());
         return "Car mark removed: " + carMark.getMark();
-
-
     }
 }

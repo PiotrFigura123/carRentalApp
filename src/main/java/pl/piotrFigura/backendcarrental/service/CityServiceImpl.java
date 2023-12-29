@@ -3,6 +3,7 @@ package pl.piotrFigura.backendcarrental.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import pl.piotrFigura.backendcarrental.dao.City;
 import pl.piotrFigura.backendcarrental.exception.RecordNotFoundException;
 import pl.piotrFigura.backendcarrental.model.CityEntity;
 import pl.piotrFigura.backendcarrental.repository.CityNameRepository;
@@ -27,7 +28,7 @@ public class CityServiceImpl implements CityService {
         sourceCity=sourceCity.toUpperCase();
         firstLvlValidator.validateCityName(sourceCity);
         secondLvlValidation.validateDuplicatedCityName(sourceCity);
-        CityEntity cityEntity = new CityEntity();
+        var cityEntity = new CityEntity();
         cityEntity.setCityName(sourceCity);
         cityNameRepository.save(cityEntity);
         return "City saved in db: " + sourceCity;
@@ -37,18 +38,20 @@ public class CityServiceImpl implements CityService {
     public List<String> findAll() {
         return cityNameRepository.findAll()
                 .stream()
-                .map(CityEntity::getCityName)
+                .map(cityEntity -> new City(cityEntity.getCityName()))
+                .map(City::getCityName)
                 .collect(Collectors.toList());
     }
 
     @Override
     public String removeCity(String cityName) {
         cityName=cityName.toUpperCase();
-        CityEntity cityEntity = cityNameRepository.findFirstByCityName(cityName)
+        City city = cityNameRepository.findFirstByCityName(cityName)
+                .map(cityEntity -> new City(cityEntity.getCityId(), cityEntity.getCityName()))
                 .orElseThrow(
                         ()-> new RecordNotFoundException(ValidatorErrorEnum.CITY_DO_NOT_EXIST.getValue()));
-        cityNameRepository.deleteByCityId(cityEntity.getCityId());
-        return "City removed from database: " + cityEntity.getCityName();
+        cityNameRepository.deleteByCityId(city.getCityId());
+        return "City removed from database: " + city.getCityName();
     }
 
 }

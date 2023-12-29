@@ -1,10 +1,12 @@
 package pl.piotrFigura.backendcarrental.model;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @Getter
@@ -21,5 +23,5 @@ public class CarMarkEntity implements Serializable{
 
 
     @OneToMany(mappedBy = "markEntity")
-    private List<CarEntity> carEntity;
+    private Set<CarEntity> carEntity;
 }

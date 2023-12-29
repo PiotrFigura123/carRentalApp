@@ -22,14 +22,13 @@ public class CarMapperImpl implements CarMapper {
         if (source == null) {
             return null;
         }
-        CarEntity carEntity = new CarEntity();
+        var carEntity = new CarEntity();
         carEntity.setModel(source.getModel());
         carEntity.setEngine(source.getEngine());
         carEntity.setPetrol(source.getPetrol());
         carEntity.setAvailable(source.isAvailable());
         carEntity.getPlateNumberEntity().setRegistration(
                 source.getPlateNumber().getRegistration());
-
         carEntity.setAvailable(true);
         return carEntity;
     }
@@ -42,7 +41,7 @@ public class CarMapperImpl implements CarMapper {
 
     @Override
     public CarMark map(CarMarkEntity source) {
-        CarMark carMark = new CarMark();
+        var carMark = new CarMark();
         carMark.setMarkId(source.getMarkId());
         carMark.setMark(source.getMark());
         return carMark;
@@ -53,14 +52,13 @@ public class CarMapperImpl implements CarMapper {
         if (carEntity == null) {
             return null;
         }
-        PlateNumber plateNumberEntity = new PlateNumber();
+        var plateNumberEntity = new PlateNumber();
         plateNumberEntity.setRegistration(carEntity.getPlateNumberEntity().getRegistration());
-        CarMark carMark = new CarMark();
+        var carMark = new CarMark();
         carMark.setMark(carEntity.getMarkEntity().getMark());
-        City city = new City();
+        var city = new City();
         city.setCityName(carEntity.getCityEntity().getCityName());
-
-        Car car = new Car();
+        var car = new Car();
         car.setId(carEntity.getCarId());
         car.setModel(carEntity.getModel());
         car.setEngine(carEntity.getEngine());
@@ -74,8 +72,6 @@ public class CarMapperImpl implements CarMapper {
 
     @Override
     public CarEntity updateCarFromDto(Car car, CarEntity carEntity) {
-
-
         if (car.getModel() != null) {
             carEntity.setModel(car.getModel());
         }
@@ -86,14 +82,12 @@ public class CarMapperImpl implements CarMapper {
             carEntity.setPetrol(car.getPetrol());
         }
         carEntity.setAvailable(car.isAvailable());
-
         if (car.getPlateNumber() != null) {
             PlateNumberEntity plateNumberEntity = new PlateNumberEntity();
             plateNumberEntity.setRegistration(car.getPlateNumber().getRegistration());
             plateNumberEntity.setPlateId(carEntity.getPlateNumberEntity().getPlateId());
             carEntity.setPlateNumberEntity(plateNumberEntity);
         }
-
         return carEntity;
     }
 }

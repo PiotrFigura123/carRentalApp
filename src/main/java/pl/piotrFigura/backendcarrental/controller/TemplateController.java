@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class TemplateController {
+class TemplateController {
 
     @GetMapping("login")
-    public String getLoginView(){
+    String getLoginView(){
         return "login";
     }
     @GetMapping("cars")
-    public String getCars(){
+    String getCars(){
         return "cars";
     }
 }

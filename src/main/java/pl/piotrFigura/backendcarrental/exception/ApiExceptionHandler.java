@@ -14,8 +14,8 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler(value = {RecordNotFoundException.class})
     public ResponseEntity<Object> handleRecordNotFoudException(RecordNotFoundException e) {
-        HttpStatus badRequest = HttpStatus.BAD_REQUEST;
-        ApiException apiException = new ApiException(
+        var badRequest = HttpStatus.BAD_REQUEST;
+        var apiException = new ApiException(
                 e.getMessage(),
                 badRequest,
                 ZonedDateTime.now(ZoneId.of("Z"))
@@ -25,8 +25,8 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler(value = {NotCorrectBodyException.class})
     public ResponseEntity<Object> handleNotCorrectBodyException(NotCorrectBodyException e) {
-        HttpStatus badRequest = HttpStatus.BAD_REQUEST;
-        ApiException apiException = new ApiException(
+        var badRequest = HttpStatus.BAD_REQUEST;
+        var apiException = new ApiException(
                 e.getMessage(),
                 badRequest,
                 ZonedDateTime.now(ZoneId.of("Z"))

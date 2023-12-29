@@ -1,5 +1,7 @@
 package pl.piotrFigura.backendcarrental.service;
 
+import pl.piotrFigura.backendcarrental.dao.City;
+
 import java.util.List;
 
 public interface CityService {

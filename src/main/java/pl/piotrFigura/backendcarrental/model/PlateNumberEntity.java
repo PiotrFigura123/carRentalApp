@@ -23,5 +23,4 @@ public class PlateNumberEntity implements Serializable {
 
     @OneToOne(mappedBy = "plateNumberEntity")
     private CarEntity carEntity;
-
 }

@@ -12,4 +12,8 @@ import java.io.Serializable;
 public class CarMark implements Serializable {
     private Integer markId;
     private String mark;
+
+    public CarMark(String mark) {
+        this.mark = mark;
+    }
 }

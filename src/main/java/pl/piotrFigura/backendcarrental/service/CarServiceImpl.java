@@ -30,7 +30,6 @@ public class CarServiceImpl implements CarService {
     public void toggleCar(Integer carId) {
         CarEntity result = carRepository.findById(carId)
                 .orElseThrow(() -> new RecordNotFoundException(RECORD_NOT_FOUND.getValue()));
-
         result.toggle();
         log.info("Car with id: {} , availability is {}", result.getCarId(), result.isAvailable());
         carRepository.save(result);
@@ -52,10 +51,10 @@ public class CarServiceImpl implements CarService {
     }
 
     public String getCarById(Integer id) {
-        CarEntity entity = carRepository.findById(id)
+        Car car = carRepository.findById(id)
+                .map(entity -> CarMapper.INSTANCE.map(entity))
                 .orElseThrow(() -> new RecordNotFoundException(RECORD_NOT_FOUND.getValue()));
-        return entity.toString();
-
+        return car.toString();
     }
 
     public String save(Car source) {
@@ -82,17 +81,14 @@ public class CarServiceImpl implements CarService {
         log.info("Update car id = {}", id);
         carRepository.save(carEntity);
         return carEntity.toString();
-
     }
 
 
     public String deleteCarById(Integer id) {
         CarEntity carEntity = carRepository.findById(id)
                 .orElseThrow(() -> new RecordNotFoundException(RECORD_NOT_FOUND.getValue()));
-
         log.info("Deleting car id = {}", id);
         carRepository.deleteById(id);
         return "Deleted : " + carEntity.toString();
     }
-
 }

@@ -15,23 +15,23 @@ import pl.piotrFigura.backendcarrental.service.CityService;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(("/api/v1/city"))
-public class CityController {
+class CityController {
 
     private final CityService cityService;
 
     @GetMapping
-    public ResponseEntity<?> getAllCities() {
+    ResponseEntity<?> getAllCities() {
         return ResponseEntity.ok(cityService.findAll());
     }
 
     @PostMapping
-    public ResponseEntity<?> addCity(@RequestParam("cityName") String cityName) {
+    ResponseEntity<?> addCity(@RequestParam("cityName") String cityName) {
         String message = cityService.saveCity(cityName);
         return ResponseEntity.ok().body(message);
     }
 
     @DeleteMapping
-    public ResponseEntity<?> removeCity(@RequestParam("cityName") String cityName) {
+    ResponseEntity<?> removeCity(@RequestParam("cityName") String cityName) {
         String message = cityService.removeCity(cityName);
         return ResponseEntity.ok().body(message);
     }

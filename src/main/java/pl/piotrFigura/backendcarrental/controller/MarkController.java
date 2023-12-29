@@ -16,25 +16,25 @@ import javax.annotation.security.RolesAllowed;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/addMark")
-public class MarkController {
+class MarkController {
 
     private final MarkService markService;
 
     @Secured({"ROLE_ADMIN", "ROLE_BRANCH"})
     @GetMapping
-    public ResponseEntity<?> getAllMarks(){
+    ResponseEntity<?> getAllMarks(){
         return ResponseEntity.ok().body(markService.getAllMarks());
     }
 
     @RolesAllowed({"ROLE_BRANCH", "ROLE_ADMIN"})
     @PostMapping
-    public ResponseEntity<?> addMark(@RequestParam("carMark") String carMark){
+    ResponseEntity<?> addMark(@RequestParam("carMark") String carMark){
         String message = markService.save(carMark);
         return ResponseEntity.ok().body(message);
     }
     @Secured({"ROLE_ADMIN", "ROLE_BRANCH"})
     @DeleteMapping
-    public ResponseEntity<?> removeMark(@RequestParam("carMark") String carMark){
+    ResponseEntity<?> removeMark(@RequestParam("carMark") String carMark){
         String message = markService.deleteCarMark(carMark);
         return ResponseEntity.ok().body(message);
     }

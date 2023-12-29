@@ -27,21 +27,21 @@ class CarController {
     private final CarService carService;
 
     @GetMapping()
-    public ResponseEntity<?> getAllCars() {
+    ResponseEntity<?> getAllCars() {
         log.info("Find all cars");
         return ResponseEntity.ok(carService.findAll());
     }
 
     @GetMapping(params = "available")
-    public ResponseEntity<?> getAllAvailableCars(@RequestParam("available") boolean isAvailable) {
+    ResponseEntity<?> getAllAvailableCars(@RequestParam("available") boolean isAvailable) {
         log.info("Find all avalaible = {} cars", isAvailable);
         List<Car> cars = carService.findAvailableCars(isAvailable);
         return ResponseEntity.ok().body(cars);
     }
 
     @GetMapping(params = "id")
-    public ResponseEntity<?> getCar(@RequestParam("id") Integer id) {
-        log.info("szukam po car id {}", id);
+    ResponseEntity<?> getCar(@RequestParam("id") Integer id) {
+        log.info("Searching car by id {}", id);
         String applicationMessage = carService.getCarById(id);
 
         return ResponseEntity.ok().body(applicationMessage);
@@ -56,7 +56,7 @@ class CarController {
     @ResponseBody
     @Transactional
     @PatchMapping("/{id}")
-    public ResponseEntity<?> toggleCar(@PathVariable Integer id) {
+    ResponseEntity<?> toggleCar(@PathVariable Integer id) {
         log.info("Toggle car number {}", id);
         carService.toggleCar(id);
         return ResponseEntity.noContent().build();

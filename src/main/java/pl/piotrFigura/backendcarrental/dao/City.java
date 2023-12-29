@@ -9,5 +9,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Data
 public class City implements Serializable {
+    private Integer cityId;
     private String cityName;
+
+    public City(String cityName) {
+        this.cityName = cityName;
+    }
 }

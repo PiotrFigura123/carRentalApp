@@ -11,15 +11,10 @@ public class BackendcarrentalApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackendcarrentalApplication.class, args);
-
-
 	}
+
 	@Bean
 	Validator validator() {
-
 		return new LocalValidatorFactoryBean();
 	}
-//TODO: sekcja 14 zdarzenia eventListener, tabelka z rezerwacjami moze byc czyms takim,
-//	jesli uzytkownik zaklepie to wtedy jest ten event listener
-
 }
