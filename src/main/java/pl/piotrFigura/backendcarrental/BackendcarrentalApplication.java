@@ -11,6 +11,7 @@ public class BackendcarrentalApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackendcarrentalApplication.class, args);
+		private final String name;
 	}
 
 	@Bean
